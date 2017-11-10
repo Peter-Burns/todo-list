@@ -1,8 +1,8 @@
 var newTodo;
 var inputHolder;
-var elements = 0;
+var status='all';
 function updateElements() {
-    $('#itemsLeft').text(`${elements} items left`)
+    $('#itemsLeft').text(`${$('.todoItem').length} items left`)
     if (!$('.todoItem').text()) {
         $('.todoFunctions').css('display', 'none');
     }
@@ -15,9 +15,21 @@ function updateClear() {
         $('.clear').show();
     }
 }
+function updateLists(state){
+    if(state==='completed'){
+        $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
+        $('input:checked').parent().show();
+    }
+    else if(state==='active'){
+        $('input:checked').not($('#allCheck')).parent().hide();
+        $('input:not(:checked)').parent().show();
+    }
+    else{
+        $('input').parent().show();
+    }
+}
 $('#inputLine').on('keyup', function (event) {
     if (event.key === 'Enter') {
-        elements++;
         newTodo = $('<div>');
         newTodo.attr('class', 'todoItem');
         newTodo.text($('#inputLine').val());
@@ -30,13 +42,13 @@ $('#inputLine').on('keyup', function (event) {
     }
 });
 $('body').on('click', '.deleteItem', function () {
-    elements--;
     $(this).parent().remove();
     updateElements();
     updateClear();
 });
 $('body').on('change', '.checkLeft', function () {
     updateClear();
+    updateLists(status);
     if (this.checked) {
         $(this).parent().css('text-decoration', 'line-through');
     }
@@ -57,14 +69,7 @@ $('#clearCompleted').on('click', function () {
     updateClear();
     $('#allCheck').prop('checked',false);
 });
-$('#all').on('click', function () {
-    $('input').parent().show();
-});
-$('#active').on('click', function () {
-    $('input:checked').not($('#allCheck')).parent().hide();
-    $('input:not(:checked)').parent().show();
-});
-$('#completed').on('click', function () {
-    $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
-    $('input:checked').parent().show();
+$('.lists').on('click',function(){
+    status=this.id;
+    updateLists(status);
 });
