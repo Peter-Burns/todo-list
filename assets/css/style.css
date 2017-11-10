@@ -1,5 +1,5 @@
 .wrapper{
-    width:500px;
+    width:40%;
     margin:0 auto;
 }
 .todoFunctions{
@@ -10,7 +10,7 @@
     float:left;
 }
 .todoInput{
-    width:460px;
+    width:95%;
 }
 h1{
     font-size:32px;
@@ -20,7 +20,7 @@ div{
     padding:4px;
 }
 .todoItem {
-    width: 500px;
+    width: 100%;
     min-height:20px;
     overflow: auto;
     border:1px solid black;
