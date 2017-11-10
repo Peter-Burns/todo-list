@@ -36,12 +36,13 @@ $('body').on('click', '.deleteItem', function () {
     updateClear();
 });
 $('body').on('change', '.checkLeft', function () {
+    updateClear();
     if (this.checked) {
         $(this).parent().css('text-decoration', 'line-through');
     }
     else {
         $('#allCheck').prop('checked',false);
-        $(this).next().css('text-decoration', 'none')
+        $(this).parent().css('text-decoration', 'none')
     }
 });
 $('#allCheck').on('change', function () {
@@ -66,7 +67,4 @@ $('#active').on('click', function () {
 $('#completed').on('click', function () {
     $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
     $('input:checked').parent().show();
-});
-$('body').on('click', '.check', function () {
-    updateClear();
 });
