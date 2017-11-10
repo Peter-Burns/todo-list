@@ -25,9 +25,6 @@ div{
     overflow: auto;
     border:1px solid black;
 }
-.todoItem:nth-child(2n){
-    background:lightgrey;
-}
 p{
     float:left;
     padding:3px

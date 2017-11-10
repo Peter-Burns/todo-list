@@ -4,10 +4,10 @@ function updateElements() {
     $('#itemsLeft').text(`${$('.todoItem').length} items left`)
     if ($('.todoItem').text()) {
         $('.todoFunctions').css('display', 'block');
-    } 
-    else if(!undoHolder){
+    }
+    else if (!undoHolder) {
         $('.todoFunctions').css('display', 'none');
-    }  
+    }
 }
 function updateClear() {
     if (!$('.checkLeft:checked').length) {
@@ -17,21 +17,21 @@ function updateClear() {
         $('.clear').show();
     }
 }
-function updateLists(state){
-    if(state==='completed'){
+function updateLists(state) {
+    if (state === 'completed') {
         $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
         $('input:checked').parent().show();
     }
-    else if(state==='active'){
+    else if (state === 'active') {
         $('input:checked').not($('#allCheck')).parent().hide();
         $('input:not(:checked)').parent().show();
     }
-    else{
+    else {
         $('input').parent().show();
     }
 }
 $('#inputLine').on('keyup', function (event) {
-    if (event.key === 'Enter'&&$('#inputLine').val()) {
+    if (event.key === 'Enter' && $('#inputLine').val()) {
         var newTodo = $(`<div class="todoItem">${$('#inputLine').val()}</div>`);
         $('#inputLine').val('');
         $('#todoHolder').after(newTodo);
@@ -42,7 +42,7 @@ $('#inputLine').on('keyup', function (event) {
     }
 });
 $('body').on('click', '.deleteItem', function () {
-    undoHolder= $(this).parent();
+    undoHolder = $(this).parent();
     $(this).parent().detach();
     $('.undo').show();
     updateElements();
@@ -55,7 +55,7 @@ $('body').on('change', '.checkLeft', function () {
         $(this).parent().css('text-decoration', 'line-through');
     }
     else {
-        $('#allCheck').prop('checked',false);
+        $('#allCheck').prop('checked', false);
         $(this).parent().css('text-decoration', 'none')
     }
 });
@@ -68,18 +68,18 @@ $('#clearCompleted').on('click', function () {
     $('input:checked').not($('#allCheck')).parent().detach();
     updateClear();
     updateElements();
-    $('#allCheck').prop('checked',false);
+    $('#allCheck').prop('checked', false);
     $('.undo').show();
 });
-$('.undo').on('click',function(){
+$('.undo').on('click', function () {
     $('.undo').hide();
     $('#todoHolder').after(undoHolder);
     updateClear();
     updateElements();
 });
-$('.lists').on('click',function(){
-    $(this).css({'background-color':'teal','color':'white'});
+$('.lists').on('click', function () {
+    $(this).css({ 'background-color': 'teal', 'color': 'white' });
     $('.lists').not(this).removeAttr('style');
-    status=this.id;
+    status = this.id;
     updateLists(status);
 });
