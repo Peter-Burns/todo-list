@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src='https://code.jquery.com/jquery-3.2.1.js'></script>
+    <title>Todo-list</title>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <h1>Todos</h1>
+        <div class="todoWrapper">
+            <input class='autoChecker' id='allCheck' type="checkbox">
+            <input class='todoInput' id='inputLine' placeholder="What do?" autocomplete="off" autofocus>
+        </div>
+        <div id='todoHolder'></div>
+        <div class='todoFunctions'>
+            <span id='itemsLeft'></span>
+            <button id='clearCompleted'>Clear completed items</button>
+        </div>
+    </div>
+
+    <script src='assets/javascript/script.js'></script>
+</body>
+
+</html>
