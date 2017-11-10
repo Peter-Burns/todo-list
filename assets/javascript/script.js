@@ -37,7 +37,7 @@ $('body').on('click', '.deleteItem', function () {
 });
 $('body').on('change', '.checkLeft', function () {
     if (this.checked) {
-        $(this).next().css('text-decoration', 'line-through');
+        $(this).parent().css('text-decoration', 'line-through');
     }
     else {
         $('#allCheck').prop('checked',false);
