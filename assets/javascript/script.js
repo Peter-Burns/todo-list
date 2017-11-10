@@ -52,6 +52,7 @@ $('#clearCompleted').on('click', function () {
     elements -= countChecked;
     $('input:checked').not($('#allCheck')).parent().remove();
     updateElements();
+    updateClear();
 });
 $('#all').on('click', function () {
     $('input').parent().show();
