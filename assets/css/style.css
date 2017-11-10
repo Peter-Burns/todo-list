@@ -22,6 +22,7 @@ div{
 .todoItem {
     width: 500px;
     min-height:20px;
+    overflow: auto;
     border:1px solid black;
 }
 .todoItem:nth-child(2n){
