@@ -1,10 +1,11 @@
 var status;
+var undoHolder;
 function updateElements() {
     $('#itemsLeft').text(`${$('.todoItem').length} items left`)
     if ($('.todoItem').text()) {
         $('.todoFunctions').css('display', 'block');
     } 
-    else{
+    else if(!undoHolder){
         $('.todoFunctions').css('display', 'none');
     }  
 }
@@ -41,7 +42,9 @@ $('#inputLine').on('keyup', function (event) {
     }
 });
 $('body').on('click', '.deleteItem', function () {
-    $(this).parent().remove();
+    undoHolder= $(this).parent();
+    $(this).parent().detach();
+    $('.undo').show();
     updateElements();
     updateClear();
 });
@@ -61,10 +64,17 @@ $('#allCheck').on('change', function () {
     updateClear();
 });
 $('#clearCompleted').on('click', function () {
-    $('input:checked').not($('#allCheck')).parent().remove();
-    updateElements();
+    undoHolder = $('input:checked').not($('#allCheck')).parent();
+    $('input:checked').not($('#allCheck')).parent().detach();
     updateClear();
+    updateElements();
     $('#allCheck').prop('checked',false);
+    $('.undo').show();
+});
+$('.undo').on('click',function(){
+    $('.undo').hide();
+    $('#todoHolder').after(undoHolder);
+    updateClear();
 });
 $('.lists').on('click',function(){
     $(this).css({'background-color':'teal','color':'white'});
