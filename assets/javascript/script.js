@@ -66,6 +66,8 @@ $('#clearCompleted').on('click', function () {
     $('#allCheck').prop('checked',false);
 });
 $('.lists').on('click',function(){
+    $(this).css({'background-color':'teal','color':'white'});
+    $('.lists').not(this).removeAttr('style');
     status=this.id;
     updateLists(status);
 });
