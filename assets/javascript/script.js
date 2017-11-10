@@ -20,7 +20,7 @@ $('#inputLine').on('keyup', function (event) {
         elements++;
         newTodo = $('<div>');
         newTodo.attr('class', 'todoItem');
-        newTodo.html('<p>' + $('#inputLine').val() + '</p>');
+        newTodo.text($('#inputLine').val());
         $('#inputLine').val('');
         $('#todoHolder').after(newTodo);
         newTodo.prepend($('<input class="checkLeft check" type="checkBox">'));
