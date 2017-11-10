@@ -7,6 +7,14 @@ function updateElements() {
         $('.todoFunctions').css('display', 'none');
     }
 }
+function updateClear (){
+    if(!$('input:checked').length){
+        $('.clear').hide();
+    }
+    else{
+        $('.clear').show();
+    }
+}
 $('#inputLine').on('keyup', function (event) {
     if (event.key === 'Enter') {
         elements++;
@@ -15,7 +23,7 @@ $('#inputLine').on('keyup', function (event) {
         newTodo.html('<p>' + $('#inputLine').val() + '</p>');
         $('#inputLine').val('');
         $('#todoHolder').after(newTodo);
-        newTodo.prepend($('<input class="checkLeft" type="checkBox">'));
+        newTodo.prepend($('<input class="checkLeft check" type="checkBox">'));
         newTodo.append($('<button class="deleteItem">X</button>'));
         $('.todoFunctions').css('display', 'block');
         updateElements();
@@ -42,4 +50,18 @@ $('#clearCompleted').on('click', function () {
     elements -= countChecked;
     $('input:checked').not($('#allCheck')).parent().remove();
     updateElements();
+});
+$('#all').on('click', function () {
+    $('input').parent().show();
+});
+$('#active').on('click', function () {
+    $('input:checked').not($('#allCheck')).parent().hide();
+    $('input:not(:checked)').parent().show();
+});
+$('#completed').on('click', function () {
+    $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
+    $('input:checked').parent().show();
+});
+$('body').on('click','.check', function () {
+    updateClear();
 });

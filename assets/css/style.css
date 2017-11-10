@@ -1,26 +1,28 @@
 .wrapper{
-    width:300px;
+    width:500px;
     margin:0 auto;
 }
 .todoFunctions{
+    text-align:center;
     display:none;
 }
 .autoChecker{
     float:left;
 }
 .todoInput{
-    width:260px;
+    width:460px;
 }
 h1{
     font-size:32px;
     text-align:center;
 }
-div{
+div{  
     padding:4px;
 }
 .todoItem {
-    width: 300px;
+    width: 500px;
     min-height:20px;
+    border:1px solid black;
 }
 .todoItem:nth-child(2n){
     background:lightgrey;
@@ -34,4 +36,10 @@ p{
 }
 .deleteItem{
     float:right;
+}
+.clear{
+    float:right;
+}
+.itemNumber{
+    float:left;
 }

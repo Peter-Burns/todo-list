@@ -12,13 +12,16 @@
     <div class='wrapper'>
         <h1>Todos</h1>
         <div class="todoWrapper">
-            <input class='autoChecker' id='allCheck' type="checkbox">
+            <input class='autoChecker check' id='allCheck' type="checkbox">
             <input class='todoInput' id='inputLine' placeholder="What do?" autocomplete="off" autofocus>
         </div>
         <div id='todoHolder'></div>
         <div class='todoFunctions'>
-            <span id='itemsLeft'></span>
-            <button id='clearCompleted'>Clear completed items</button>
+            <span class='itemNumber' id='itemsLeft'></span>
+            <button id='all'>All</button>
+            <button id='active'>Active</button>
+            <button id='completed'>Completed</button>
+            <button hidden class='clear' id='clearCompleted'>Clear completed items</button>
         </div>
     </div>
 
