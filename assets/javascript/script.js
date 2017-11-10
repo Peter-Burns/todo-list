@@ -40,6 +40,7 @@ $('body').on('change', '.checkLeft', function () {
         $(this).next().css('text-decoration', 'line-through');
     }
     else {
+        $('#allCheck').prop('checked',false);
         $(this).next().css('text-decoration', 'none')
     }
 });
@@ -53,6 +54,7 @@ $('#clearCompleted').on('click', function () {
     $('input:checked').not($('#allCheck')).parent().remove();
     updateElements();
     updateClear();
+    $('#allCheck').prop('checked',false);
 });
 $('#all').on('click', function () {
     $('input').parent().show();
