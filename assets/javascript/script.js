@@ -30,7 +30,7 @@ function updateLists(state){
     }
 }
 $('#inputLine').on('keyup', function (event) {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter'&&$('#inputLine').val()) {
         var newTodo = $(`<div class="todoItem">${$('#inputLine').val()}</div>`);
         $('#inputLine').val('');
         $('#todoHolder').after(newTodo);
