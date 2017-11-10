@@ -1,11 +1,12 @@
-var newTodo;
-var inputHolder;
 var status='all';
 function updateElements() {
     $('#itemsLeft').text(`${$('.todoItem').length} items left`)
-    if (!$('.todoItem').text()) {
+    if ($('.todoItem').text()) {
+        $('.todoFunctions').css('display', 'block');
+    } 
+    else{
         $('.todoFunctions').css('display', 'none');
-    }
+    }  
 }
 function updateClear() {
     if (!$('.checkLeft:checked').length) {
@@ -30,14 +31,11 @@ function updateLists(state){
 }
 $('#inputLine').on('keyup', function (event) {
     if (event.key === 'Enter') {
-        newTodo = $('<div>');
-        newTodo.attr('class', 'todoItem');
-        newTodo.text($('#inputLine').val());
+        var newTodo = $(`<div class="todoItem">${$('#inputLine').val()}</div>`);
         $('#inputLine').val('');
         $('#todoHolder').after(newTodo);
         newTodo.prepend($('<input class="checkLeft check" type="checkBox">'));
         newTodo.append($('<button class="deleteItem">X</button>'));
-        $('.todoFunctions').css('display', 'block');
         updateElements();
     }
 });
@@ -62,8 +60,6 @@ $('#allCheck').on('change', function () {
     updateClear();
 });
 $('#clearCompleted').on('click', function () {
-    var countChecked = $("input:checked").not($('#allCheck')).length;
-    elements -= countChecked;
     $('input:checked').not($('#allCheck')).parent().remove();
     updateElements();
     updateClear();
