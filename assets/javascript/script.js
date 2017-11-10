@@ -75,6 +75,7 @@ $('.undo').on('click',function(){
     $('.undo').hide();
     $('#todoHolder').after(undoHolder);
     updateClear();
+    updateElements();
 });
 $('.lists').on('click',function(){
     $(this).css({'background-color':'teal','color':'white'});
