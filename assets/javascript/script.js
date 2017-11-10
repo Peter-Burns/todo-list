@@ -1,4 +1,4 @@
-var status='all';
+var status;
 function updateElements() {
     $('#itemsLeft').text(`${$('.todoItem').length} items left`)
     if ($('.todoItem').text()) {
@@ -37,6 +37,7 @@ $('#inputLine').on('keyup', function (event) {
         newTodo.prepend($('<input class="checkLeft check" type="checkBox">'));
         newTodo.append($('<button class="deleteItem">X</button>'));
         updateElements();
+        updateLists(status);
     }
 });
 $('body').on('click', '.deleteItem', function () {
