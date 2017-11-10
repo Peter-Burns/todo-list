@@ -7,11 +7,11 @@ function updateElements() {
         $('.todoFunctions').css('display', 'none');
     }
 }
-function updateClear (){
-    if(!$('input:checked').length){
+function updateClear() {
+    if (!$('.checkLeft:checked').length) {
         $('.clear').hide();
     }
-    else{
+    else {
         $('.clear').show();
     }
 }
@@ -33,6 +33,7 @@ $('body').on('click', '.deleteItem', function () {
     elements--;
     $(this).parent().remove();
     updateElements();
+    updateClear();
 });
 $('body').on('change', '.checkLeft', function () {
     if (this.checked) {
@@ -44,6 +45,7 @@ $('body').on('change', '.checkLeft', function () {
 });
 $('#allCheck').on('change', function () {
     $('input:checkbox').not(this).prop('checked', this.checked);
+    updateClear();
 });
 $('#clearCompleted').on('click', function () {
     var countChecked = $("input:checked").not($('#allCheck')).length;
@@ -62,6 +64,6 @@ $('#completed').on('click', function () {
     $('input:checkBox:not(:checked)').not($('#allCheck')).parent().hide();
     $('input:checked').parent().show();
 });
-$('body').on('click','.check', function () {
+$('body').on('click', '.check', function () {
     updateClear();
 });
